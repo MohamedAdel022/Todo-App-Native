@@ -16,6 +16,6 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(MainActivity.getIntent(this))
             finish()
-        }, 2000) // 2 seconds delay
+        }, 2000)
     }
 }

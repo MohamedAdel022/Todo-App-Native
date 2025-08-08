@@ -7,7 +7,13 @@
         <!-- <item name="colorOnPrimary">@color/my_light_on_primary</item> -->
         // make the splash screen translucent
         <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimary">@color/sky_blue</item>
+        <item name="colorAccent">@color/mint</item>
+        <item name="android:statusBarColor">@color/sky_blue</item>
 
+    </style>
+    <style name="fab_rounded" parent="ShapeAppearanceOverlay.Material3.FloatingActionButton">
+        <item name="cornerSize">50%</item>
     </style>
 
     <style name="Theme.TodoApp" parent="Base.Theme.TodoApp" />
