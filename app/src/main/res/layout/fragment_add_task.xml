@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rounded_background"
+    android:padding="38dp">
+
+    <TextView
+        android:id="@+id/bottom_sheet_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_new_task"
+        style="@style/MediumTitleTextStyle"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/add_task_title_edit_text"
+        android:layout_width="match_parent"
+        android:layout_marginTop="38dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/enter_your_task_title"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title"
+        />
+
+    <EditText
+        android:id="@+id/add_task_description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_marginTop="38dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/task_description"
+        android:maxLines="3"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/add_task_title_edit_text"
+        />
+
+    <TextView
+        android:id="@+id/select_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_task_description_edit_text"
+        android:text="@string/select_time"
+        android:layout_marginTop="33dp"
+        style="@style/MediumTitleTextStyle"
+        />
+
+    <TextView
+        android:id="@+id/select_time_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/LightDescriptionTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/select_time_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="12:00 AM"
+        />
+
+    <TextView
+
+        android:id="@+id/select_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/select_time_text_view"
+        android:text="@string/select_date"
+        android:layout_marginTop="33dp"
+        style="@style/MediumTitleTextStyle"
+        />
+
+    <TextView
+        android:id="@+id/select_date_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/LightDescriptionTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/select_date_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="June 20, 2024"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_task"
+        android:backgroundTint="@color/sky_blue"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/select_date_text_view"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

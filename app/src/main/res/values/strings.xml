@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Todo App</string>
+    <string name="add_new_task">Add New Task</string>
+    <string name="enter_your_task_title">Enter task title...</string>
+    <string name="task_description">Task Description</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_time">Select Time</string>
+    <string name="add_task">Add Task</string>
+    <string name="bottom_nav_settings">Settings</string>
+    <string name="bottom_nav_tasks">Tasks</string>
 </resources>

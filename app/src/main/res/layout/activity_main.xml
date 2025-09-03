@@ -6,7 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/mint">
+    android:background="?attr/colorSurface">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        android:background="@color/sky_blue"
+        app:title="To Do List"
+        app:titleMarginStart="52dp"
+        app:titleTextAppearance="@style/LargeTitleTextStyle"
+        />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layout_anchorGravity="center"/>
 
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -19,14 +37,17 @@
         app:fabCradleMargin="12dp"
         android:clipToOutline="true"
         app:fabCradleVerticalOffset="2dp"
-
         >
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_nav_bar_menu"
             app:labelVisibilityMode="unlabeled"
+            app:itemActiveIndicatorStyle="@null"
+            app:itemRippleColor="@android:color/transparent"
+            app:itemBackground="@drawable/nav_item_background"
             app:itemTextColor="@color/bottom_item_nav_color"
             app:itemIconTint="@color/bottom_item_nav_color"
             />

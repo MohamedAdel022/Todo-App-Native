@@ -7,7 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.route.todoapp.databinding.ActivityMainBinding
+import com.route.todoapp.fragments.addTask.AddTaskFragment
+import com.route.todoapp.fragments.settings.SettingsFragment
+import com.route.todoapp.fragments.tasksList.TasksListFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -16,6 +20,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        initListeners()
+        showFragment(TasksListFragment())
+    }
+
+    fun showFragment( fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.fragmentContainer.id, fragment)
+            .commit()
+    }
+
+   private fun initListeners() {
+        binding.fabAddTask.setOnClickListener {
+            AddTaskFragment().show(supportFragmentManager, "AddTaskFragment")
+        }
+
+       binding.bottomNavigationView.setOnItemSelectedListener {
+           when(it.itemId) {
+               R.id.navigation_tasks_list -> {
+                   showFragment(TasksListFragment())
+
+               }
+               R.id.navigation_settings-> {
+                    showFragment(SettingsFragment())
+               }
+
+           }
+
+           return@setOnItemSelectedListener true
+
+       }
 
     }
 

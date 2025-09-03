@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="?attr/colorSurfaceContainer"
+    app:strokeColor="?attr/colorSurfaceContainer"
+    app:cardCornerRadius="16dp"
+    android:layout_margin="22dp"
+    app:cardElevation="4dp">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="18dp"
+    android:paddingVertical="24dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/vertical_line"
+        android:layout_width="4dp"
+        android:layout_height="0dp"
+        app:strokeColor="@color/sky_blue"
+        app:cardCornerRadius="16dp"
+        android:backgroundTint="@color/sky_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/task_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play basket ball"
+        style="@style/MediumTitleTextStyle"
+        android:textColor="@color/sky_blue"
+        app:layout_constraintStart_toEndOf="@id/vertical_line"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="24dp"
+        />
+
+    <TextView
+        android:id="@+id/task_time_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:30 AM"
+        style="@style/MediumLabelTextStyle"
+        app:layout_constraintStart_toEndOf="@id/vertical_line"
+        app:layout_constraintTop_toBottomOf="@id/task_title_text_view"
+        android:layout_marginStart="24dp"
+        />
+
+    <ImageView
+        android:id="@+id/is_done_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_check"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/rounded_blue_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingHorizontal="21dp"
+        android:paddingVertical="8dp"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
