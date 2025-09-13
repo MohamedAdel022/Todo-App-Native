@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.room.Room
+import com.route.todoapp.database.MyDatabase
 import com.route.todoapp.databinding.ActivityMainBinding
 import com.route.todoapp.fragments.addTask.AddTaskFragment
 import com.route.todoapp.fragments.settings.SettingsFragment
@@ -15,14 +17,14 @@ import com.route.todoapp.fragments.tasksList.TasksListFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    var tasksListFragment= TasksListFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         initListeners()
-        showFragment(TasksListFragment())
+        showFragment(tasksListFragment)
     }
 
     fun showFragment( fragment: Fragment) {
@@ -33,7 +35,9 @@ class MainActivity : AppCompatActivity() {
 
    private fun initListeners() {
         binding.fabAddTask.setOnClickListener {
-            AddTaskFragment().show(supportFragmentManager, "AddTaskFragment")
+            AddTaskFragment{
+                tasksListFragment.refreshTasksList()
+            }.show(supportFragmentManager, "AddTaskFragment")
         }
 
        binding.bottomNavigationView.setOnItemSelectedListener {

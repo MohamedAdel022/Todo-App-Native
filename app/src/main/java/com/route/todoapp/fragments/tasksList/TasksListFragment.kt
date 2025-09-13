@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.route.todoapp.database.MyDatabase
 import com.route.todoapp.databinding.FragmentTasksListBinding
 import com.route.todoapp.models.TaskDM
 
 class TasksListFragment : Fragment(){
     lateinit var binding: FragmentTasksListBinding
-    var tasksListAdapter= TasksListAdapter (emptyList())
+    var adapter = TasksListAdapter (emptyList())
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,35 +27,34 @@ class TasksListFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         initTasksListRecyclerView()
+        refreshTasksList()
 
     }
 
-    private fun initTasksListRecyclerView() {
-        binding.TaskRecyclerView.adapter = tasksListAdapter
-        tasksListAdapter.tasksList = listOf(
-            TaskDM(
-                id = 1,
-                title = "Complete project presentation",
-                description = "Prepare slides and practice presentation for the upcoming project review meeting",
-                dueDate = System.currentTimeMillis() + (24 * 60 * 60 * 1000), // Tomorrow
-                isCompleted = false
-            ),
-            TaskDM(
-                id = 2,
-                title = "Buy groceries",
-                description = "Get milk, bread, eggs, and vegetables from the supermarket",
-                dueDate = System.currentTimeMillis() + (7 * 24 * 60 * 60 * 1000), // Next week
-                isCompleted = true
-            ),
-            TaskDM(
-                id = 3,
-                title = "Schedule dentist appointment",
-                description = "Call the dental clinic to schedule a regular checkup appointment",
-                dueDate = System.currentTimeMillis() + (3 * 24 * 60 * 60 * 1000), // In 3 days
-                isCompleted = false
-            )
-        )
+     fun refreshTasksList() {
+       val tasks = MyDatabase.getInstance().taskDao().getAllTasks()
+        adapter.submitList(tasks)
+    }
 
-        tasksListAdapter.notifyDataSetChanged()
+
+    private fun initTasksListRecyclerView() {
+        binding.TaskRecyclerView.adapter = adapter
+        adapter.onItemClickListener = object : TasksListAdapter.OnItemClickListener {
+            override fun onItemClick(task: TaskDM) {
+                // Handle item click
+            }
+
+            override fun onDoneClick(task: TaskDM) {
+                task.isCompleted = !task.isCompleted
+                MyDatabase.getInstance().taskDao().updateTask(task)
+                refreshTasksList()
+            }
+
+            override fun onDeleteClick(task: TaskDM) {
+                MyDatabase.getInstance().taskDao().deleteTask(task)
+                refreshTasksList()
+            }
+        }
+
     }
 }
