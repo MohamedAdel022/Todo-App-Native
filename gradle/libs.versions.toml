@@ -29,5 +29,4 @@ swipelayout = { module = "com.github.zerobranch:SwipeLayout", version.ref = "swi
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kps= {id= "com.google.devtools.ksp", version.ref= "ksp"}
-
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
